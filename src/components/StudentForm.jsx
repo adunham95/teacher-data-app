@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { colors } from '../functions/utils/data';
+import { colors } from '../functions/utils/data.ts';
 import { ColorBlock } from './ColorBlock';
 
 const defaultStudent = {

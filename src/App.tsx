@@ -19,6 +19,7 @@ function App() {
     <div className="App">
       <ModalProvider>
         <Router>
+        
       <div className="flex flex-col"></div>
       <Header/>
       <Switch>

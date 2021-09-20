@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { colors, ColorInterface } from '../functions/utils/data';
+import { colors, ColorInterface } from '../functions/utils/data.ts';
+import { saveGroup } from '../functions/group';
 import { ColorBlock } from './ColorBlock';
 
 const defaultGroup = {
@@ -12,13 +13,18 @@ const GroupForm = ({ group = defaultGroup }) => {
   const [groupName, setGroupName] = useState(group.name);
   const [selectedColor, setSelectedColor] = useState(group.color);
 
-  function saveGroup() {
-
+  function saveGroupForm(e: any) {
+    e.preventDefault();
+    saveGroup({
+      id: '',
+      groupName,
+      color: selectedColor,
+    });
   }
 
   return (
     <div className="mt-5 md:mt-0 md:col-span-2">
-      <form onSubmit={saveGroup}>
+      <form onSubmit={saveGroupForm}>
         <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
           <div className="grid grid-cols-6 gap-6">
 
