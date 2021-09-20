@@ -27,3 +27,7 @@ export function getAllGroup() {
   console.log(allBlocks);
   return allBlocks;
 }
+
+export function getSingleGroup(id) {
+  return getFromLocal(id);
+}
