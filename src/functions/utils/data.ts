@@ -1,3 +1,8 @@
+export interface ColorInterface {
+  name: string,
+  color: string
+}
+
 export const colors = [
   { name: 'Red', color: '#f44336' },
   { name: 'Pink', color: '#E91E63' },
