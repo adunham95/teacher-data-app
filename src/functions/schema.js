@@ -4,6 +4,7 @@ export const StudentSchema = {
   id: generateID(),
   firstName: 'John',
   lastName: 'Doe',
+  groupID: '000',
 };
 
 export const GroupSchema = {

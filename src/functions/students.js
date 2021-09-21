@@ -11,7 +11,7 @@ export function saveBlock(newBlockData) {
     // Adds id to the block
     newBlock.id = generateID();
     // Adds the id to the list of block
-    meta.push(newBlock.id);
+    meta.push({ id: newBlock.id, groupID: newBlock.groupID });
     // Saves metadata
     saveToLocal(dbNames.meta, meta);
   }
