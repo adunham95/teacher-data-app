@@ -14,7 +14,7 @@ const Students = () => {
   return (
     <div>
       <main className="container mx-auto">
-        <div className="flex flex-col pt-1 pb-2">
+        <div className="flex flex-col md:pt-1 md:pb-2 p-3">
           <label className="text-sm text-gray-500">Search</label>
           <input
             className=" border-2 "
