@@ -6,6 +6,7 @@ import { useModal } from '../components/ModalContext';
 import StudentForm from '../components/StudentForm';
 import { getColorClassName } from '../components/ColorBlock';
 import { getAllStudentsByGroup } from '../functions/students';
+import PageHeader from '../components/PageHeader';
 
 const Group = () => {
   const { id } = useParams();
@@ -39,13 +40,10 @@ const Group = () => {
 
   return (
     <div>
-      <header
-        className={`bg-white border-b-2 ${getColorClassName(groupData.color, 'border')}`}
-      >
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">{groupData.groupName}</h1>
-        </div>
-      </header>
+      <PageHeader
+        title={groupData.groupName}
+        className={`${getColorClassName(groupData.color, 'border')}`}
+      />
       <main className="container mx-auto p-2">
         <button onClick={() => setModalID('newStudent')}>New Student</button>
       </main>

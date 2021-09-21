@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getColorClassName } from '../components/ColorBlock';
 import { getAllStudents } from '../functions/students';
+import PageHeader from '../components/PageHeader';
 
 const Students = () => {
   const [allStudents, setAllStudent] = useState([]);

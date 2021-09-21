@@ -6,6 +6,7 @@ import { useModal } from '../components/ModalContext';
 import { getAllGroup } from '../functions/group';
 import { getAllStudents } from '../functions/students';
 import { getColorClassName } from '../components/ColorBlock';
+import PageHeader from '../components/PageHeader';
 
 const Dashboard = () => {
   const { setModalID } = useModal();
@@ -26,13 +27,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <header
-        className="bg-white border-b-2"
-      >
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        </div>
-      </header>
+      <PageHeader title="Dashboard" />
       <main className="container p-1 mx-auto">
         <div className="flex">
           <div className="border-2 border-blue-500 rounded p-4 flex flex-col justify-center content-center w-1/2 md:w-1/5 mr-1 mb-1">
