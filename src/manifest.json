@@ -1,6 +1,6 @@
 {
-    "short_name": "App Data",
-    "name": "App Data Collection",
+    "short_name": "Emelie Data",
+    "name": "Emelie Data Collection",
     "icons": [
         {
             "src": "icon/android-icon-36x36.png",
@@ -37,7 +37,13 @@
             "sizes": "192x192",
             "type": "image\/png",
             "density": "4.0"
-           }
+           },
+        {
+            "src": "icon/maskable_icon.png",
+            "sizes": "585x585",
+            "type": "image/png",
+            "purpose": "maskable"
+            }
           ],
     "start_url": "/",
     "background_color": "#fc886d",
