@@ -7,7 +7,7 @@ import colors from '../functions/utils/colors.json';
 const defaultGroup = {
   id: '',
   name: '',
-  color: '#000000',
+  color: 'Black',
 };
 
 const GroupForm = ({ group = defaultGroup }) => {

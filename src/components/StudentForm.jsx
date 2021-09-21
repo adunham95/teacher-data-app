@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllGroup } from '../functions/group';
+import { saveStudent } from '../functions/students';
 import { colors } from '../functions/utils/data.ts';
 import { ColorBlock } from './ColorBlock';
 
@@ -13,6 +14,7 @@ const defaultStudent = {
 const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select' }) => {
   const [firstName, setFirstName] = useState(student.firstName);
   const [lastName, setLastName] = useState(student.lastName);
+  const [selectedGroup, setSelectedGroup] = useState(defaultGroup);
   const [selectedColor, setSelectedColor] = useState(student.color);
   const [groupData, setGroupData] = useState([]);
   const [groupSelectorOpen, setGroupSelector] = useState(false);
@@ -23,8 +25,15 @@ const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select' }) => {
     setGroupData(groups);
   }, []);
 
-  function saveStudentForm() {
+  function saveStudentForm(e) {
+    e.preventDefault();
+    const newStudent = {
+      groupID: selectedGroup,
+      firstName,
+      lastName,
+    };
 
+    saveStudent(newStudent);
   }
 
   return (
@@ -82,13 +91,14 @@ const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select' }) => {
                   htmlFor="group"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Country / Region
+                  Group
                 </label>
                 <select
                   id="group"
                   name="group"
                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  defaultChecked={defaultGroup}
+                  value={selectedGroup}
+                  onChange={(e) => setSelectedGroup(e.target.value)}
                 >
                   <option value="select">
                     Select Group
