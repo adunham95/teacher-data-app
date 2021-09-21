@@ -7,7 +7,7 @@ export function saveGroup(newBlockData) {
   const newBlock = { ...GroupSchema, ...newBlockData };
   if (newBlockData.id === '') {
     // Gets the metadata
-    const meta = getFromLocal(dbNames.meta);
+    const meta = getFromLocal(dbNames.groupMeta);
     // Adds id to the block
     newBlock.id = generateID();
     // Adds the id to the list of block

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getSingleGroup } from '../functions/group';
 import Modal from '../components/Modal';
 import { useModal } from '../components/ModalContext';
+import StudentForm from '../components/StudentForm';
 
 const Group = () => {
   const { id } = useParams();
@@ -45,6 +46,7 @@ const Group = () => {
       <Modal id="newStudent">
         <div className="bg-white">
           <h1 className="pt-4 px-4">New Student</h1>
+          <StudentForm defaultGroup={groupData.id} />
         </div>
       </Modal>
     </div>
