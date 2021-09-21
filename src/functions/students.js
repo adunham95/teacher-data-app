@@ -11,7 +11,7 @@ export function saveStudent(newBlockData) {
     // Adds id to the block
     newBlock.id = generateID();
     // Adds the id to the list of block
-    meta.push({ id: newBlock.id, groupID: newBlock.groupID });
+    meta.push({ id: newBlock.id, groups: newBlock.groupID });
     // Saves metadata
     saveToLocal(dbNames.meta, meta);
   }
@@ -26,4 +26,12 @@ export function getAllStudents() {
   const allBlocks = meta.map((id) => ({ ...StudentSchema, ...getFromLocal(id) }));
   console.log(allBlocks);
   return allBlocks;
+}
+
+export function getAllStudentsByGroup(groupID) {
+  // Gets the metadata
+  const meta = getFromLocal(dbNames.meta);
+  const filteredStudents = meta.filter((s) => s.groups.includes(groupID));
+  const allStudents = filteredStudents.map((u) => ({ ...StudentSchema, ...getFromLocal(u.id) }));
+  return allStudents;
 }

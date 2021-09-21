@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllGroup } from '../functions/group';
 import { saveStudent } from '../functions/students';
-import { colors } from '../functions/utils/data.ts';
-import { ColorBlock } from './ColorBlock';
 
 const defaultStudent = {
   id: '',
@@ -28,7 +26,8 @@ const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select' }) => {
   function saveStudentForm(e) {
     e.preventDefault();
     const newStudent = {
-      groupID: selectedGroup,
+      id: '',
+      groupID: [selectedGroup],
       firstName,
       lastName,
     };

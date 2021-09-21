@@ -5,6 +5,7 @@ import Modal from '../components/Modal';
 import { useModal } from '../components/ModalContext';
 import StudentForm from '../components/StudentForm';
 import { getColorClassName } from '../components/ColorBlock';
+import { getAllStudentsByGroup } from '../functions/students';
 
 const Group = () => {
   const { id } = useParams();
@@ -14,6 +15,8 @@ const Group = () => {
 
   useEffect(() => {
     const data = getSingleGroup(id);
+    const students = getAllStudentsByGroup(id);
+    console.log(students);
     setGroupData(data);
     setStatus(data?.groupName ? '' : 'Error Loading Group');
   }, [id]);
