@@ -1,6 +1,7 @@
 import { generateID } from './utils/utils';
 import { getFromLocal, saveToLocal } from './database';
 import { StudentSchema, dbNames } from './schema';
+import { getSingleGroup } from './group';
 
 export function saveStudent(newBlockData) {
   // Creates the block from the schema
@@ -23,8 +24,8 @@ export function saveStudent(newBlockData) {
 export function getAllStudents() {
   // Gets the metadata
   const meta = getFromLocal(dbNames.meta);
-  const allBlocks = meta.map((id) => ({ ...StudentSchema, ...getFromLocal(id) }));
-  console.log(allBlocks);
+  const allBlocks = meta.map((u) => (getSingleStudent(u.id)));
+  console.log('allBlocks', allBlocks);
   return allBlocks;
 }
 
@@ -32,6 +33,12 @@ export function getAllStudentsByGroup(groupID) {
   // Gets the metadata
   const meta = getFromLocal(dbNames.meta);
   const filteredStudents = meta.filter((s) => s.groups.includes(groupID));
-  const allStudents = filteredStudents.map((u) => ({ ...StudentSchema, ...getFromLocal(u.id) }));
+  const allStudents = filteredStudents.map((u) => (getSingleStudent(u.id)));
   return allStudents;
+}
+
+export function getSingleStudent(id) {
+  const stu = { ...getFromLocal(id) };
+  stu.groups = stu.groupID.map((g) => getSingleGroup(g));
+  return stu;
 }

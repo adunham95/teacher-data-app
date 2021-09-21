@@ -11,7 +11,7 @@ interface ColorBlockType {
     setColor: (color: string) => void,
 }
 
-export function getColorClassName(color: string, type: 'bg' | 'ring' | 'border'): string {
+export function getColorClassName(color: string, type: 'bg' | 'ring' | 'border'| 'text'): string {
   const selectedColor = colors.find((c) => c.name === color);
   console.log(selectedColor);
   if (!selectedColor) {

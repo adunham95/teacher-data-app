@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 import Dashboard from './views/Dashboard.jsx';
 import Group from './views/Group';
+import Students from './views/Students';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <Route path="/group/:id">
               <Group />
+            </Route>
+            <Route path="/students">
+              <Students />
             </Route>
             <Route
               exact
