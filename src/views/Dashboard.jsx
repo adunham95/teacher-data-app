@@ -34,13 +34,13 @@ const Dashboard = () => {
           <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
         </div>
       </header>
-      <main className="container p-1">
+      <main className="container p-1 mx-auto">
         <div className="flex">
-          <div className="border-2 border-blue-500 rounded p-4 flex flex-col justify-center content-center w-1/5 mr-1 mb-1">
+          <div className="border-2 border-blue-500 rounded p-4 flex flex-col justify-center content-center w-1/2 md:w-1/5 mr-1 mb-1">
             <span className="text-center">Groups</span>
             <span className="text-center font-bold text-3xl">{groupData.length}</span>
           </div>
-          <div className="border-2 border-blue-500 rounded p-4 flex flex-col justify-center content-center w-1/5 mr-1 mb-1">
+          <div className="border-2 border-blue-500 rounded p-4 flex flex-col justify-center content-center w-1/2 md:w-1/5 mr-1 mb-1">
             <span className="text-center">Students</span>
             <span className="text-center font-bold text-3xl">{studentData.length}</span>
           </div>
@@ -76,8 +76,8 @@ function GroupCard({
   id = '', color, groupName, onClick,
 }) {
   const classes = {
-    inner: `${getColorClassName(color, 'border')} p-5 text-center border-2 transition duration-150  border-opacity-75 hover:border-opacity-100 rounded `,
-    outter: 'p-1 w-1/5',
+    inner: `${getColorClassName(color, 'border')} p-5 h-full flex justify-center text-center items-center border-2 transition duration-150  border-opacity-75 hover:border-opacity-100 rounded `,
+    outter: 'p-1 w-1/3 md:w-1/5',
   };
   if (onClick === undefined) {
     return (
