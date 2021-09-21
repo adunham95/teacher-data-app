@@ -1,4 +1,4 @@
-const colors = require('./src/functions/utils/colors.json');
+const colors = require('./data/colorData.json');
 
 const colorObject = {};
 
@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-
+        ...colorObject,
       },
     },
   },
