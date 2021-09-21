@@ -15,6 +15,7 @@ const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select' }) => {
   const [lastName, setLastName] = useState(student.lastName);
   const [selectedColor, setSelectedColor] = useState(student.color);
   const [groupData, setGroupData] = useState([]);
+  const [groupSelectorOpen, setGroupSelector] = useState(false);
 
   useEffect(() => {
     const groups = getAllGroup();
@@ -102,9 +103,6 @@ const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select' }) => {
                       </option>
                     ))
                   }
-                  {/* <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option> */}
                 </select>
               </div>
 
