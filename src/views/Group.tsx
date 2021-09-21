@@ -4,6 +4,7 @@ import { getSingleGroup } from '../functions/group';
 import Modal from '../components/Modal';
 import { useModal } from '../components/ModalContext';
 import StudentForm from '../components/StudentForm';
+import { getColorClassName } from '../components/ColorBlock';
 
 const Group = () => {
   const { id } = useParams();
@@ -36,8 +37,7 @@ const Group = () => {
   return (
     <div>
       <header
-        className="bg-white border-b-2"
-        style={{ borderColor: groupData.color }}
+        className={`bg-white border-b-2 ${getColorClassName(groupData.color, 'border')}`}
       >
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-gray-900">{groupData.groupName}</h1>

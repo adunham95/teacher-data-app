@@ -6,6 +6,7 @@ import Modal from '../components/Modal';
 import { useModal } from '../components/ModalContext';
 import { getAllGroup } from '../functions/group';
 import { getAllStudents } from '../functions/students';
+import { getColorClassName } from '../components/ColorBlock';
 
 const Dashboard = () => {
   const { setModalID } = useModal();
@@ -32,7 +33,7 @@ const Dashboard = () => {
       </div>
       <div>
         <GroupCard
-          color="green"
+          color="bg-green-500"
           groupName="New Group"
           onClick={() => setModalID('newBlock')}
         />
@@ -64,7 +65,7 @@ function GroupCard({
     return (
       <Link
         to={`/group/${id}`}
-        style={{ backgroundColor: color }}
+        className={getColorClassName(color, 'bg')}
       >
         {groupName}
       </Link>
@@ -73,7 +74,7 @@ function GroupCard({
   return (
     <button
       onClick={onClick}
-      style={{ backgroundColor: color }}
+      className={getColorClassName(color, 'bg')}
     >
       {groupName}
     </button>
