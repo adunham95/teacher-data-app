@@ -18,6 +18,7 @@ export function saveGroup(newBlockData) {
   console.log(newBlock);
   // Saves block
   saveToLocal(newBlock.id, newBlock);
+  return newBlock;
 }
 
 export function getAllGroup() {

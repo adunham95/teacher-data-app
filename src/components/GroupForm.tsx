@@ -10,17 +10,18 @@ const defaultGroup = {
   color: 'Black',
 };
 
-const GroupForm = ({ group = defaultGroup }) => {
+const GroupForm = ({ group = defaultGroup, onSave = () => {} }) => {
   const [groupName, setGroupName] = useState(group.name);
   const [selectedColor, setSelectedColor] = useState(group.color);
 
   function saveGroupForm(e: any) {
     e.preventDefault();
-    saveGroup({
+    const newGroup = saveGroup({
       id: '',
       groupName,
       color: selectedColor,
     });
+    onSave(newGroup);
   }
 
   return (

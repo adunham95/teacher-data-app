@@ -20,6 +20,11 @@ const Dashboard = () => {
     setStudentData(students);
   }, []);
 
+  function groupSave(newGroup) {
+    setModalID('');
+    setGroupData([...groupData, newGroup]);
+  }
+
   return (
     <div>
       <h1>Home</h1>
@@ -50,7 +55,7 @@ const Dashboard = () => {
         <div className="bg-white">
           <h1 className="pt-4 px-4">New Group</h1>
 
-          <GroupForm />
+          <GroupForm onSave={(g) => groupSave(g)} />
         </div>
       </Modal>
     </div>
