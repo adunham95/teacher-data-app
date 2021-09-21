@@ -35,13 +35,17 @@ const Group = () => {
 
   return (
     <div>
-      <header className="bg-white shadow">
+      <header
+        className="bg-white border-b-2"
+        style={{ borderColor: groupData.color }}
+      >
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-gray-900">{groupData.groupName}</h1>
         </div>
       </header>
-      <h1>Group</h1>
-      <button onClick={() => setModalID('newStudent')}>New Student</button>
+      <main className="container mx-auto p-2">
+        <button onClick={() => setModalID('newStudent')}>New Student</button>
+      </main>
 
       <Modal id="newStudent">
         <div className="bg-white">
