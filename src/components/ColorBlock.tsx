@@ -1,4 +1,5 @@
 import React from 'react';
+import colors from '../functions/utils/colors.json';
 
 interface ColorBlockType {
     colorData: {
@@ -10,7 +11,13 @@ interface ColorBlockType {
     setColor: (color: string) => void,
 }
 
-export function ColorBlock({ colorData: { name, color, className }, selectedColor, setColor }: ColorBlockType) {
+export function getColorClassName(color: string, type: 'bg' | 'ring' | 'border'): string {
+  const selectedColor = colors.find((c) => c.color === color);
+  console.log(selectedColor);
+  return selectedColor[type];
+}
+
+export function ColorBlock({ colorData: { name, color }, selectedColor, setColor }: ColorBlockType) {
   function setStyle() {
     if (color === selectedColor) {
       return {
@@ -27,14 +34,11 @@ export function ColorBlock({ colorData: { name, color, className }, selectedColo
       type="button"
       aria-label={`Color ${name}`}
       onClick={() => setColor(color)}
-      className="rounded-full w-8 h-8 m-1 border-2 border-solid outline-none"
-      style={setStyle()}
+      className={`rounded-full w-8 h-8 m-1 ring-2 ring-offset-1 outline-none ${color === selectedColor ? getColorClassName(color, 'ring') : 'ring-transparent'}`}
+      // style={setStyle()}
     >
       <span
-        className="h-full w-full rounded-full block"
-        style={{
-          backgroundColor: color,
-        }}
+        className={`h-full w-full rounded-full block ${getColorClassName(color, 'bg')}`}
       />
     </button>
   );

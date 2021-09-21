@@ -9,6 +9,7 @@ const colorData = colors.map((c) => ({
   ...c,
   bg: `bg-${c.className}`,
   ring: `ring-${c.className}`,
+  border: `border-${c.className}`,
 }));
 
 console.log(colorData);
