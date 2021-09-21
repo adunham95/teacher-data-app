@@ -1,26 +1,83 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import StudentFrom from '../components/StudentForm';
 import GroupForm from '../components/GroupForm';
-import Modal from "../components/Modal"
+import Modal from '../components/Modal';
 import { useModal } from '../components/ModalContext';
+import { getAllGroup } from '../functions/group';
+import { getAllStudents } from '../functions/students';
 
 const Dashboard = () => {
   const { setModalID } = useModal();
-  
-  return (
-  <div>
-    <h1>Home</h1>
-    <button onClick={()=>setModalID("newBlock")}>New Group</button>
-    {/* <StudentFrom /> */}
-    {/* <GroupForm /> */}
-    <Modal id="newBlock">
-      <div className="bg-white">
-        <h1 className="pt-4 px-4">New Group</h1>
+  const [groupData, setGroupData] = useState([]);
+  const [studentData, setStudentData] = useState([]);
 
-      <GroupForm/>
+  useEffect(() => {
+    const group = getAllGroup();
+    const students = getAllStudents();
+    setGroupData(group);
+    setStudentData(students);
+  }, []);
+
+  return (
+    <div>
+      <h1>Home</h1>
+      <div>
+        <div>
+          {groupData.length}
+        </div>
+        <div>
+          {studentData.length}
+        </div>
       </div>
-    </Modal>
-  </div>
-)};
+      <div>
+        <GroupCard
+          color="green"
+          groupName="New Group"
+          onClick={() => setModalID('newBlock')}
+        />
+        {
+          groupData.map((g) => (
+            <GroupCard
+              key={g.id}
+              {...g}
+            />
+          ))
+        }
+      </div>
+      <Modal id="newBlock">
+        <div className="bg-white">
+          <h1 className="pt-4 px-4">New Group</h1>
+
+          <GroupForm />
+        </div>
+      </Modal>
+    </div>
+  );
+};
+
+function GroupCard({
+  id = '', color, groupName, onClick,
+}) {
+  console.log(onClick);
+  if (onClick === undefined) {
+    return (
+      <Link
+        to={`/group/${id}`}
+        style={{ backgroundColor: color }}
+      >
+        {groupName}
+      </Link>
+    );
+  }
+  return (
+    <button
+      onClick={onClick}
+      style={{ backgroundColor: color }}
+    >
+      {groupName}
+    </button>
+  );
+}
 
 export default Dashboard;

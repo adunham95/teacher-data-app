@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { colors, ColorInterface } from '../functions/utils/data.ts';
+// import { colors, ColorInterface } from '../functions/utils/data.ts';
 import { saveGroup } from '../functions/group';
 import { ColorBlock } from './ColorBlock';
+import colors from '../functions/utils/colors.json';
 
 const defaultGroup = {
   id: '',
@@ -59,7 +60,7 @@ const GroupForm = ({ group = defaultGroup }) => {
               </label>
               <div className="flex flex-wrap">
                 {
-                    colors.map((c: ColorInterface) => (
+                    colors.map((c) => (
                       <ColorBlock
                         colorData={c}
                         selectedColor={selectedColor}

@@ -3,13 +3,14 @@ import React from 'react';
 interface ColorBlockType {
     colorData: {
         name: string,
-        color: string
+        color: string,
+        className: string
     },
     selectedColor: string,
     setColor: (color: string) => void,
 }
 
-export function ColorBlock({ colorData: { name, color }, selectedColor, setColor }: ColorBlockType) {
+export function ColorBlock({ colorData: { name, color, className }, selectedColor, setColor }: ColorBlockType) {
   function setStyle() {
     if (color === selectedColor) {
       return {
@@ -29,9 +30,11 @@ export function ColorBlock({ colorData: { name, color }, selectedColor, setColor
       className="rounded-full w-8 h-8 m-1 border-2 border-solid outline-none"
       style={setStyle()}
     >
-      <span style={{
-        backgroundColor: color, height: '100%', width: '100%', borderRadius: '100%', display: 'block',
-      }}
+      <span
+        className="h-full w-full rounded-full block"
+        style={{
+          backgroundColor: color,
+        }}
       />
     </button>
   );

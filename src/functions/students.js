@@ -2,7 +2,7 @@ import { generateID } from './utils/utils';
 import { getFromLocal, saveToLocal } from './database';
 import { StudentSchema, dbNames } from './schema';
 
-export function saveBlock(newBlockData) {
+export function saveStudent(newBlockData) {
   // Creates the block from the schema
   const newBlock = { ...StudentSchema, ...newBlockData };
   if (newBlockData.id === '') {
@@ -20,7 +20,7 @@ export function saveBlock(newBlockData) {
   saveToLocal(newBlock.id, newBlock);
 }
 
-export function getAllBlocks() {
+export function getAllStudents() {
   // Gets the metadata
   const meta = getFromLocal(dbNames.meta);
   const allBlocks = meta.map((id) => ({ ...StudentSchema, ...getFromLocal(id) }));
