@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
+const links = [
+  { title: 'Dashboard', path: '/' },
+  { title: 'Students', path: '/students' },
+];
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -66,9 +71,21 @@ const Header = () => {
                 Data App
               </h1>
             </div>
-           
+            <div className="hidden sm:block sm:ml-6">
+              <div className="flex space-x-4">
+                {links.map((item) => (
+                  <a
+                    key={item.title}
+                    href={item.path}
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
-          
+
         </div>
       </div>
 
@@ -82,32 +99,17 @@ const Header = () => {
         id="mobile-menu"
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
-          {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
-          {/* <a
-            href="#"
-            className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-            aria-current="page"
-          >
-            Dashboard
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Team
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Projects
-          </a>
-          <a
-            href="#"
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-          >
-            Calendar
-          </a> */}
+          {
+            links.map((l) => (
+              <Link
+                id={l.title}
+                to={l.path}
+                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              >
+                {l.title}
+              </Link>
+            ))
+          }
         </div>
       </div>
       )
