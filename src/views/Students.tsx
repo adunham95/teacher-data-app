@@ -3,15 +3,25 @@ import { Link } from 'react-router-dom';
 import { getAllStudents } from '../functions/students';
 import PageHeader from '../components/PageHeader';
 import GroupChip from '../components/GroupChip';
+import { useModal } from '../components/ModalContext';
+import Modal from '../components/Modal';
+import StudentForm from '../components/StudentForm';
 
 const Students = () => {
   const [allStudents, setAllStudent] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const { setModalID } = useModal();
 
   useEffect(() => {
     const data = getAllStudents();
     setAllStudent(data);
   }, []);
+
+  function savedStudent(student) {
+    console.log([...allStudents, student]);
+    setAllStudent([...allStudents, student]);
+    setModalID('');
+  }
 
   return (
     <div>
@@ -27,7 +37,12 @@ const Students = () => {
 
           </div>
           <div className="col-span-1 flex justify-center items-center">
-            <button className="text-center bg-green-400 text-white rounded px-3 py-1">New Student</button>
+            <button
+              className="text-center bg-green-400 text-white rounded px-3 py-1"
+              onClick={() => setModalID('newStudent')}
+            >
+              New Student
+            </button>
           </div>
         </div>
         <div className="flex flex-col">
@@ -57,7 +72,10 @@ const Students = () => {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             <div className="ml-4">
-                              <Link className='className="text-sm font-medium text-gray-900"'>
+                              <Link
+                                className='className="text-sm font-medium text-gray-900'
+                                to={`/students/${person.id}`}
+                              >
                                 {person.firstName}
                                 {' '}
                                 {person.lastName}
@@ -81,6 +99,9 @@ const Students = () => {
           </div>
         </div>
       </main>
+      <Modal id="newStudent">
+        <StudentForm onSave={(stu) => savedStudent(stu)} />
+      </Modal>
     </div>
   );
 };

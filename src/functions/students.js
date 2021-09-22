@@ -19,6 +19,7 @@ export function saveStudent(newBlockData) {
   console.log(newBlock);
   // Saves block
   saveToLocal(newBlock.id, newBlock);
+  return getSingleStudent(newBlock.id);
 }
 
 export function getAllStudents() {
