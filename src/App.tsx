@@ -12,6 +12,7 @@ import {
 import Dashboard from './views/Dashboard.jsx';
 import Group from './views/Group';
 import Students from './views/Students';
+import SingleStudent from './views/SIngleStudent';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -32,6 +33,9 @@ function App() {
             </Route>
             <Route path="/group/:id">
               <Group />
+            </Route>
+            <Route path="/students/:id">
+              <SingleStudent />
             </Route>
             <Route path="/students">
               <Students />

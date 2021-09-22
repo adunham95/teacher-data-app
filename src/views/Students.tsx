@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getColorClassName } from '../components/ColorBlock';
 import { getAllStudents } from '../functions/students';
 import PageHeader from '../components/PageHeader';
+import GroupChip from '../components/GroupChip';
 
 const Students = () => {
   const [allStudents, setAllStudent] = useState([]);
@@ -60,9 +61,7 @@ const Students = () => {
                         <td className="px-6 py-4 whitespace-nowrap">
                           {
                                 person.groups.map((g) => (
-                                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getColorClassName(g.color, 'bg')} bg-opacity-20 ${getColorClassName(g.color, 'text')} mr-1`}>
-                                    {g.groupName}
-                                  </span>
+                                  <GroupChip {...g} />
                                 ))
                             }
                         </td>

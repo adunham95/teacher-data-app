@@ -38,7 +38,8 @@ export function getAllStudentsByGroup(groupID) {
 }
 
 export function getSingleStudent(id) {
-  const stu = { ...getFromLocal(id) };
+  const stu = { ...StudentSchema, ...getFromLocal(id) };
+  console.log(stu);
   stu.groups = stu.groupID.map((g) => getSingleGroup(g));
   return stu;
 }

@@ -1,10 +1,10 @@
 import { generateID } from './utils/utils';
 
 export const StudentSchema = {
-  id: generateID(),
-  firstName: 'John',
-  lastName: 'Doe',
-  groupID: '000',
+  id: '1234-error',
+  firstName: '',
+  lastName: '',
+  groupID: [],
 };
 
 export const GroupSchema = {
