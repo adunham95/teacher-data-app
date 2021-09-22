@@ -18,7 +18,7 @@ const Modal = ({ id, children }) => {
         >
           <button
             type="button"
-            className="absolute -right-2 -top-6 text-red-500 text-5xl hover:text-red-700"
+            className="absolute right-2 -top-6 text-red-500 text-5xl hover:text-red-700"
             data-dismiss="modal"
             aria-label="Close"
             onClick={() => setModalID('')}

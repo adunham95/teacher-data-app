@@ -106,14 +106,14 @@ const StudentFrom = ({ student = defaultStudent, defaultGroup = '', onSave = () 
                 >
                   Group
                 </label>
-                <div className="max-h-half-screen overflow-y-scroll">
+                <div className="max-h-half-screen overflow-y-auto">
                   {
                       groupData.map((g) => (
                         <button
                           key={`colorBlock-${g.id}`}
                           type="button"
                           onClick={() => updateGroup(g.id)}
-                          className={`px-6 py-4 md:px-4 md:py-2 inline-flex text-base leading-5 font-semibold rounded-full border-2 ${getColorClassName(g.color, 'border')} bg-opacity-20 ${getColorClassName(g.color, 'text')} mr-1 mt-1 ${groupSelections.includes(g.id) ? getColorClassName(g.color, 'bg') : 'bg-transparent'}`}
+                          className={`px-4 py-2 inline-flex text-lg md:text-base leading-5 font-semibold rounded-full border-2 ${getColorClassName(g.color, 'border')} bg-opacity-20 ${getColorClassName(g.color, 'text')} mr-1 mt-1 ${groupSelections.includes(g.id) ? getColorClassName(g.color, 'bg') : 'bg-transparent'}`}
                         >
                           {g.groupName}
                         </button>

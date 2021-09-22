@@ -28,7 +28,7 @@ const Students = () => {
       <PageHeader title="Students" />
       <main className="container mx-auto">
         <div className="grid grid-cols-6">
-          <div className="flex flex-col md:pt-1 md:pb-2 p-3 col-span-5">
+          <div className="flex flex-col md:pt-1 md:pb-2 p-3 col-span-6 md:col-span-4">
             <label className="text-sm text-gray-500">Search</label>
             <input
               className=" border-2 "
@@ -36,9 +36,9 @@ const Students = () => {
             />
 
           </div>
-          <div className="col-span-1 flex justify-center items-center">
+          <div className="col-span-6 px-3 pb-2 md:col-span-2 flex justify-center items-end">
             <button
-              className="text-center bg-green-400 text-white rounded px-3 py-1"
+              className="text-center bg-green-400 text-white rounded px-3 py-1 w-full"
               onClick={() => setModalID('newStudent')}
             >
               New Student
