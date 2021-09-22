@@ -14,6 +14,7 @@ import Group from './views/Group';
 import Students from './views/Students';
 import SingleStudent from './views/SIngleStudent';
 import WebcamTest from './views/WebcamTest';
+import ErrorPage from './views/404';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -48,8 +49,7 @@ function App() {
               exact
               path="*"
             >
-              <h1>404 Page</h1>
-              {/* <Home /> */}
+              <ErrorPage />
             </Route>
           </Switch>
         </Router>
