@@ -2,9 +2,9 @@ import React from 'react';
 
 interface PageHeaderProps{
     title: string,
-    className: string,
-    textColor: string,
-    bgColor: string
+    className?: string,
+    textColor?: string,
+    bgColor?: string
 }
 
 const PageHeader = ({

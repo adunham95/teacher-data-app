@@ -10,7 +10,7 @@ const defaultGroup = {
   color: 'Black',
 };
 
-const GroupForm = ({ group = defaultGroup, onSave = () => {} }) => {
+const GroupForm = ({ group = defaultGroup, onSave = (ng) => {} }) => {
   const [groupName, setGroupName] = useState(group.name);
   const [selectedColor, setSelectedColor] = useState(group.color);
 

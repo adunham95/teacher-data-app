@@ -38,6 +38,9 @@
         "global-require": 0,
         "no-underscore-dangle": 0,
         "react/react-in-jsx-scope": 0,
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "react/require-default-props": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": "off"
     }
 }

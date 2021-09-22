@@ -3,10 +3,13 @@ import { useParams } from 'react-router-dom';
 import GroupChip from '../components/GroupChip';
 import PageHeader from '../components/PageHeader';
 import { getSingleStudent } from '../functions/students';
+import { StudentInterface } from '../interface';
 
 const SingleStudent = () => {
-  const [student, setStudent] = useState('');
-  const { id } = useParams();
+  const [student, setStudent] = useState<StudentInterface>({
+    firstName: '', lastName: '', groups: [], id: '',
+  });
+  const { id } = useParams<{ id: string }>();
   const [status, setStatus] = useState('loading');
 
   useEffect(() => {

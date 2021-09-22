@@ -7,12 +7,13 @@ import StudentForm from '../components/StudentForm';
 import { getColorClassName } from '../components/ColorBlock';
 import { getAllStudentsByGroup } from '../functions/students';
 import PageHeader from '../components/PageHeader';
+import { GroupInterface } from '../interface';
 
 const Group = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
   const [status, setStatus] = useState('loading');
-  const [groupData, setGroupData] = useState();
-  const { setModalID } = useModal();
+  const [groupData, setGroupData] = useState < GroupInterface>({ groupName: '', color: 'Red', id: '' });
+  const { setModalID }: any = useModal();
 
   useEffect(() => {
     const data = getSingleGroup(id);

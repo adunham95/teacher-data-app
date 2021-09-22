@@ -8,18 +8,18 @@ import Modal from '../components/Modal';
 import StudentForm from '../components/StudentForm';
 
 const Students = () => {
-  const [allStudents, setAllStudent] = useState([]);
+  const [allStudents, setAllStudent] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const { setModalID } = useModal();
+  const { setModalID }: any = useModal();
 
   useEffect(() => {
     const data = getAllStudents();
     setAllStudent(data);
   }, []);
 
-  function savedStudent(student) {
-    console.log([...allStudents, student]);
-    setAllStudent([...allStudents, student]);
+  function savedStudent(student: any) {
+    const data = [...allStudents, student];
+    setAllStudent(data);
     setModalID('');
   }
 
@@ -67,7 +67,7 @@ const Students = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
-                    {allStudents.filter((p) => `${p.firstName} ${p.lastName}`.includes(searchTerm)).map((person) => (
+                    {allStudents.filter((p:any) => `${p.firstName} ${p.lastName}`.includes(searchTerm)).map((person:any) => (
                       <tr key={person.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
@@ -100,7 +100,7 @@ const Students = () => {
         </div>
       </main>
       <Modal id="newStudent">
-        <StudentForm onSave={(stu) => savedStudent(stu)} />
+        <StudentForm onSave={(stu: any) => savedStudent(stu)} />
       </Modal>
     </div>
   );

@@ -10,7 +10,7 @@ const defaultStudent = {
   color: '#000000',
 };
 
-const StudentFrom = ({ student = defaultStudent, defaultGroup = '', onSave = () => {} }) => {
+const StudentFrom = ({ student = defaultStudent, defaultGroup = '', onSave = (stu) => {} }) => {
   const [firstName, setFirstName] = useState(student.firstName);
   const [lastName, setLastName] = useState(student.lastName);
   const [groupData, setGroupData] = useState([]);
