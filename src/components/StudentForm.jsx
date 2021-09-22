@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAllGroup } from '../functions/group';
 import { saveStudent } from '../functions/students';
+import { getColorClassName } from '../components/ColorBlock';
 
 const defaultStudent = {
   id: '',
@@ -9,13 +10,11 @@ const defaultStudent = {
   color: '#000000',
 };
 
-const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select', onSave = () => {} }) => {
+const StudentFrom = ({ student = defaultStudent, defaultGroup = '', onSave = () => {} }) => {
   const [firstName, setFirstName] = useState(student.firstName);
   const [lastName, setLastName] = useState(student.lastName);
-  const [selectedGroup, setSelectedGroup] = useState(defaultGroup);
-  const [selectedColor, setSelectedColor] = useState(student.color);
   const [groupData, setGroupData] = useState([]);
-  const [groupSelectorOpen, setGroupSelector] = useState(false);
+  const [groupSelections, setGroupSelections] = useState([defaultGroup]);
 
   useEffect(() => {
     const groups = getAllGroup();
@@ -23,11 +22,25 @@ const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select', onSave
     setGroupData(groups);
   }, []);
 
+  function updateGroup(groupID) {
+    console.log('groupID', groupID);
+    let updateGroupData = [...groupSelections];
+    if (updateGroupData.includes(groupID)) {
+      // remove group
+      updateGroupData = updateGroupData.filter((g) => g !== groupID);
+    } else {
+      // add group id
+      updateGroupData.push(groupID);
+    }
+    console.log(updateGroupData);
+    setGroupSelections(updateGroupData);
+  }
+
   function saveStudentForm(e) {
     e.preventDefault();
     const newStudent = {
       id: '',
-      groupID: [selectedGroup],
+      groupID: groupSelections.filter((g) => g !== ''),
       firstName,
       lastName,
     };
@@ -85,61 +98,31 @@ const StudentFrom = ({ student = defaultStudent, defaultGroup = 'select', onSave
                 </div>
               </div>
 
-              {/* Group */}
+              {/* Group Chip Based */}
               <div className="col-span-6">
                 <label
-                  htmlFor="group"
+                  htmlFor="groupChip"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Group
                 </label>
-                <select
-                  id="group"
-                  name="group"
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  value={selectedGroup}
-                  onChange={(e) => setSelectedGroup(e.target.value)}
-                >
-                  <option value="select">
-                    Select Group
-                  </option>
+                <div className="max-h-half-screen overflow-y-scroll">
                   {
-                    groupData.map((g) => (
-                      <option
-                        value={g.id}
-                        selected={defaultGroup === g.id}
-                      >
-                        {g.groupName}
-                      </option>
-                    ))
-                  }
-                </select>
+                      groupData.map((g) => (
+                        <button
+                          key={`colorBlock-${g.id}`}
+                          type="button"
+                          onClick={() => updateGroup(g.id)}
+                          className={`px-6 py-4 md:px-4 md:py-2 inline-flex text-base leading-5 font-semibold rounded-full border-2 ${getColorClassName(g.color, 'border')} bg-opacity-20 ${getColorClassName(g.color, 'text')} mr-1 mt-1 ${groupSelections.includes(g.id) ? getColorClassName(g.color, 'bg') : 'bg-transparent'}`}
+                        >
+                          {g.groupName}
+                        </button>
+                      ))
+                    }
+                </div>
               </div>
 
             </div>
-
-            {/* Block Color */}
-            {/* <div className="col-span-3">
-              <label
-                htmlFor="blockcolor"
-                className="block text-sm font-medium text-gray-700 text-left pl-2"
-              >
-                Block Color
-              </label>
-              <div className="flex flex-wrap">
-                {
-                    colors.map((c) => (
-                      <ColorBlock
-                        colorData={c}
-                        selectedColor={selectedColor}
-                        setColor={(color) => setSelectedColor(color)}
-                        key={`Color-${c.name}`}
-                      />
-                    ))
-                  }
-              </div>
-
-            </div> */}
 
             <div className="text-right sm:px-6">
               <button

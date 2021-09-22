@@ -13,7 +13,7 @@ interface ColorBlockType {
 
 export function getColorClassName(color: string, type: 'bg' | 'ring' | 'border'| 'text'): string {
   const selectedColor = colors.find((c) => c.name === color);
-  console.log(selectedColor);
+  // console.log(selectedColor);
   if (!selectedColor) {
     return color;
   }

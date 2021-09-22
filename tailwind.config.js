@@ -14,6 +14,9 @@ module.exports = {
       colors: {
         ...colorObject,
       },
+      maxHeight: {
+        'half-screen': '50vh',
+      },
     },
   },
   variants: {
