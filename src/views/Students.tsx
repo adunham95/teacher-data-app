@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getColorClassName } from '../components/ColorBlock';
+import { Link } from 'react-router-dom';
 import { getAllStudents } from '../functions/students';
 import PageHeader from '../components/PageHeader';
 import GroupChip from '../components/GroupChip';
@@ -15,13 +15,20 @@ const Students = () => {
 
   return (
     <div>
+      <PageHeader title="Students" />
       <main className="container mx-auto">
-        <div className="flex flex-col md:pt-1 md:pb-2 p-3">
-          <label className="text-sm text-gray-500">Search</label>
-          <input
-            className=" border-2 "
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+        <div className="grid grid-cols-6">
+          <div className="flex flex-col md:pt-1 md:pb-2 p-3 col-span-5">
+            <label className="text-sm text-gray-500">Search</label>
+            <input
+              className=" border-2 "
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+
+          </div>
+          <div className="col-span-1 flex justify-center items-center">
+            <button className="text-center bg-green-400 text-white rounded px-3 py-1">New Student</button>
+          </div>
         </div>
         <div className="flex flex-col">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -50,11 +57,11 @@ const Students = () => {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
+                              <Link className='className="text-sm font-medium text-gray-900"'>
                                 {person.firstName}
                                 {' '}
                                 {person.lastName}
-                              </div>
+                              </Link>
                             </div>
                           </div>
                         </td>
