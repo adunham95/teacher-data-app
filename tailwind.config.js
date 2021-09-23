@@ -11,8 +11,6 @@ colors.forEach((c) => {
   safeColorList.push(`text-${c.className}`);
 });
 
-console.log(safeColorList);
-
 module.exports = {
   purge: {
     content: [
@@ -21,7 +19,6 @@ module.exports = {
       './src/**/*.jsx',
     ],
     safelist: [
-      'bg-customRed',
       ...safeColorList,
     ],
   },
