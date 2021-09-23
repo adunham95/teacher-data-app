@@ -7,12 +7,14 @@ import StudentForm from '../components/StudentForm';
 import { getColorClassName } from '../components/ColorBlock';
 import { getAllStudentsByGroup } from '../functions/students';
 import PageHeader from '../components/PageHeader';
-import { GroupInterface } from '../interface';
+import { GroupInterface, StudentInterface } from '../interface';
+import StudentList from '../components/StudentList';
 
 const Group = () => {
   const { id } = useParams<{ id: string }>();
   const [status, setStatus] = useState('loading');
   const [groupData, setGroupData] = useState < GroupInterface>({ groupName: '', color: 'Red', id: '' });
+  const [studentData, setStudentData] = useState<StudentInterface[]>([]);
   const { setModalID }: any = useModal();
 
   useEffect(() => {
@@ -20,6 +22,7 @@ const Group = () => {
     const students = getAllStudentsByGroup(id);
     console.log(students);
     setGroupData(data);
+    setStudentData(students);
     setStatus(data?.groupName ? '' : 'Error Loading Group');
   }, [id]);
 
@@ -47,6 +50,7 @@ const Group = () => {
       />
       <main className="container mx-auto p-2">
         <button onClick={() => setModalID('newStudent')}>New Student</button>
+        <StudentList students={studentData} />
       </main>
 
       <Modal id="newStudent">
