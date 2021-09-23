@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
-import { ModalProvider } from './components/ModalContext.jsx';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
 } from 'react-router-dom';
+import Header from './components/Header';
+import { ModalProvider } from './components/ModalContext.jsx';
 import Dashboard from './views/Dashboard.jsx';
 import Group from './views/Group';
 import Students from './views/Students';
