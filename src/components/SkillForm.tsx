@@ -1,7 +1,14 @@
 import React, { ReactEventHandler, useEffect, useState } from 'react';
 import { addSkill, getSkills } from '../functions/skills';
+import { addSKillCheck } from '../functions/students';
+import { StudentInterface } from '../interface';
 
-const SkillForm = () => {
+interface SkillFormProps{
+    studentID: string,
+    onSave?: (stu: StudentInterface) => void
+}
+
+const SkillForm = ({ studentID, onSave = (stu) => {} }: SkillFormProps) => {
   const [skillName, setSkillName] = useState('');
   const [skillDate, setSkillDate] = useState('');
   const [skillNotes, setSkillNotes] = useState('');
@@ -18,7 +25,7 @@ const SkillForm = () => {
 
   function saveSkillForm(e:React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // addSkill(skillName);
+    addSkill(skillName);
     const newSkill = {
       skillDate,
       skillName,
@@ -26,6 +33,8 @@ const SkillForm = () => {
       skillNotes,
     };
     console.log('newSkill', newSkill);
+    const updatedStudent = addSKillCheck(newSkill, studentID);
+    onSave(updatedStudent);
   }
 
   return (

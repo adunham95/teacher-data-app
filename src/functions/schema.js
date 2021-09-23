@@ -5,6 +5,7 @@ export const StudentSchema = {
   firstName: '',
   lastName: '',
   groupID: [],
+  skillData: [],
 };
 
 export const GroupSchema = {

@@ -44,3 +44,13 @@ export function getSingleStudent(id) {
   stu.groups = stu.groupID.map((g) => getSingleGroup(g));
   return stu;
 }
+
+export function addSKillCheck(skillData, id) {
+  const stu = { ...StudentSchema, ...getFromLocal(id) };
+  if (!stu?.skillData) {
+    stu.skillData = [];
+  }
+  stu.skillData.push(skillData);
+  saveToLocal(id, stu);
+  return stu;
+}

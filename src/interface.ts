@@ -10,6 +10,7 @@ export interface StudentInterface{
     id: string,
     groupID?: [string],
     groups: Array<GroupInterface>
+    skillData: Array<SkillInterface>
 }
 
 export interface SkillInterface{
