@@ -10,7 +10,7 @@ export function saveStudent(newBlockData) {
     // Gets the metadata
     const meta = getFromLocal(dbNames.meta);
     // Adds id to the block
-    newBlock.id = generateID();
+    newBlock.id = `stu-${generateID()}`;
     // Adds the id to the list of block
     meta.push({ id: newBlock.id, groups: newBlock.groupID });
     // Saves metadata

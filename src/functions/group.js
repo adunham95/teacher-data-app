@@ -9,7 +9,7 @@ export function saveGroup(newBlockData) {
     // Gets the metadata
     const meta = getFromLocal(dbNames.groupMeta);
     // Adds id to the block
-    newBlock.id = generateID();
+    newBlock.id = `grp-${generateID()}`;
     // Adds the id to the list of block
     meta.push(newBlock.id);
     // Saves metadata
