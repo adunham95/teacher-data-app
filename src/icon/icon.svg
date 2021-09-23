@@ -24,7 +24,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.28070068"
-     inkscape:cx="404.6292"
+     inkscape:cx="301.31631"
      inkscape:cy="772.81074"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -62,8 +62,10 @@
        inkscape:export-ydpi="96" />
     <g
        id="g1343"
-       transform="matrix(1.4943236,0,0,1.4943236,208.33446,-17.83802)"
-       style="fill:#e7e9ec;fill-opacity:1;stroke:#e7e9ec;stroke-opacity:1">
+       transform="matrix(1.4943236,0,0,1.4943236,41.865691,-17.83802)"
+       style="fill:#e7e9ec;fill-opacity:1;stroke:#e7e9ec;stroke-opacity:1"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
       <path
          style="fill:#e7e9ec;fill-opacity:1;stroke:#e7e9ec;stroke-width:0.264999;stroke-opacity:1"
          d="m -79.980418,84.582949 c -0.156548,0 -3.817524,2.647336 -4.442105,3.212205 -1.05764,0.956527 1.43388,-0.02469 2.861842,-1.127061 1.501679,-1.159391 2.203563,-2.085144 1.580263,-2.085144 z"
