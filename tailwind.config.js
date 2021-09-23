@@ -20,6 +20,7 @@ module.exports = {
     './src/**/*.jsx',
   ],
   safelist: [
+    'bg-customRed',
     ...safeColorList,
   ],
   darkMode: false, // or 'media' or 'class'
