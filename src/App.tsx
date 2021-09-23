@@ -15,6 +15,7 @@ import Students from './views/Students';
 import SingleStudent from './views/SIngleStudent';
 import WebcamTest from './views/WebcamTest';
 import ErrorPage from './views/404';
+import QrCodeView from './views/QRCode';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path="/webcam">
               <WebcamTest />
+            </Route>
+            <Route path="/qr/share">
+              <QrCodeView />
             </Route>
             <Route
               exact
