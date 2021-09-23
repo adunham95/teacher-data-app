@@ -1,6 +1,7 @@
 import React, { ReactEventHandler, useEffect, useState } from 'react';
 import { addSkill, getSkills } from '../functions/skills';
 import { addSKillCheck } from '../functions/students';
+import { generateID } from '../functions/utils/utils';
 import { StudentInterface } from '../interface';
 
 interface SkillFormProps{
@@ -13,6 +14,7 @@ const SkillForm = ({ studentID, onSave = (stu) => {} }: SkillFormProps) => {
   const [skillDate, setSkillDate] = useState('');
   const [skillNotes, setSkillNotes] = useState('');
   const [skillScore, setSkillScore] = useState(0);
+  const [skillMax, setSkillMax] = useState(0);
   const [skillList, setSkillList] = useState<string[]>([]);
 
   useEffect(() => {
@@ -27,13 +29,16 @@ const SkillForm = ({ studentID, onSave = (stu) => {} }: SkillFormProps) => {
     e.preventDefault();
     addSkill(skillName);
     const newSkill = {
+      id: generateID(),
       skillDate,
       skillName,
       skillScore,
+      skillScoreMax: skillMax,
       skillNotes,
     };
     console.log('newSkill', newSkill);
     const updatedStudent = addSKillCheck(newSkill, studentID);
+    console.log(updatedStudent);
     onSave(updatedStudent);
   }
 
@@ -57,7 +62,7 @@ const SkillForm = ({ studentID, onSave = (stu) => {} }: SkillFormProps) => {
               <div className="grid grid-cols-6 gap-6">
 
                 {/* Skill Name */}
-                <div className="col-span-6">
+                <div className="col-span-3">
                   <label
                     htmlFor="firstName"
                     className="block text-sm font-medium text-gray-700 text-left pl-2"
@@ -73,6 +78,28 @@ const SkillForm = ({ studentID, onSave = (stu) => {} }: SkillFormProps) => {
                       placeholder="Reading"
                       onChange={(e) => setSkillName(e.target.value)}
                       value={skillName}
+                      list="skillList"
+                    />
+                  </div>
+                </div>
+
+                {/* Date */}
+                <div className="col-span-3">
+                  <label
+                    htmlFor="date"
+                    className="block text-sm font-medium text-gray-700 text-left pl-2"
+                  >
+                    Date
+                  </label>
+                  <div className="mt-1 flex rounded-md shadow-sm">
+                    <input
+                      type="date"
+                      name="date"
+                      id="date"
+                      className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      placeholder="Reading"
+                      onChange={(e) => setSkillDate(e.target.value)}
+                      value={skillDate}
                       list="skillList"
                     />
                   </div>
@@ -99,24 +126,23 @@ const SkillForm = ({ studentID, onSave = (stu) => {} }: SkillFormProps) => {
                   </div>
                 </div>
 
-                {/* Date */}
+                {/* Skill Max Score */}
                 <div className="col-span-3">
                   <label
-                    htmlFor="date"
+                    htmlFor="skillMaxScore"
                     className="block text-sm font-medium text-gray-700 text-left pl-2"
                   >
-                    Date
+                    Skill Max Score
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
-                      type="date"
-                      name="date"
-                      id="date"
+                      type="number"
+                      name="skillMaxScore"
+                      id="skillMaxScore"
                       className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       placeholder="Reading"
-                      onChange={(e) => setSkillDate(e.target.value)}
-                      value={skillDate}
-                      list="skillList"
+                      onChange={(e) => setSkillMax(parseInt(e.target.value, 10))}
+                      value={skillMax}
                     />
                   </div>
                 </div>

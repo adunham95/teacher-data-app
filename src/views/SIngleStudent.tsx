@@ -26,7 +26,7 @@ const SingleStudent = () => {
 
   function skillSubmit(updatedStudent) {
     setModalID('');
-    setStudent(updatedStudent);
+    setStudent({ ...student, ...updatedStudent });
   }
 
   if (status === 'loading') {

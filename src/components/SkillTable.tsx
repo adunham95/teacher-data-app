@@ -15,7 +15,7 @@ function formatDate(dateString:string) {
 const SkillTable = ({ skills }: SkillTableProps) => {
   const { setModalID }: any = useModal();
   const [singleSkill, setSingleSkill] = useState<SkillInterface>({
-    skillName: '', skillDate: '', skillScore: 0, skillNotes: '',
+    id: '', skillName: '', skillDate: '', skillScore: 0, skillNotes: '',
   });
 
   return (
@@ -49,7 +49,7 @@ const SkillTable = ({ skills }: SkillTableProps) => {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {skills.map((s:SkillInterface) => (
-                    <tr key={s.skillName}>
+                    <tr key={s.id}>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="ml-4 hover:text-blue-700">
@@ -63,7 +63,10 @@ const SkillTable = ({ skills }: SkillTableProps) => {
                         {formatDate(s.skillDate)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {s.skillScore}
+                        {singleSkill.skillScore}
+                        {
+                          singleSkill?.skillMaxScore ? singleSkill.skillScore / singleSkill.skillMaxScore : singleSkill.skillScore
+                        }
                       </td>
                     </tr>
                   ))}
@@ -85,7 +88,9 @@ const SkillTable = ({ skills }: SkillTableProps) => {
                 {/* <p className="col-span-3">{formatDa>te(singleSkill.skillDate)}</p> */}
                 <p className="col-span-6">
                   Score:
-                  {singleSkill.skillScore}
+                  {
+                    singleSkill?.skillMaxScore ? `${(singleSkill.skillScore / singleSkill.skillMaxScore) * 100}%` : singleSkill.skillScore
+                  }
                 </p>
                 <div className="col-span-6">
                   <label className=" text-base ">Notes</label>

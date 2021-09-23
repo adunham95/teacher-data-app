@@ -14,8 +14,10 @@ export interface StudentInterface{
 }
 
 export interface SkillInterface{
+    id: string,
     skillName: string,
     skillDate: string,
     skillScore: number,
-    skillNotes: string
+    skillNotes: string,
+    skillMaxScore?: number
 }
