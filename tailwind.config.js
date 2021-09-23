@@ -14,15 +14,17 @@ colors.forEach((c) => {
 console.log(safeColorList);
 
 module.exports = {
-  purge: [
-    './src/**/*.html',
-    './src/**/*.tsx',
-    './src/**/*.jsx',
-  ],
-  safelist: [
-    'bg-customRed',
-    ...safeColorList,
-  ],
+  purge: {
+    content: [
+      './src/**/*.html',
+      './src/**/*.tsx',
+      './src/**/*.jsx',
+    ],
+    safelist: [
+      'bg-customRed',
+      ...safeColorList,
+    ],
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
