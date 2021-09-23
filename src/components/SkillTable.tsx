@@ -78,10 +78,19 @@ const SkillTable = ({ skills }: SkillTableProps) => {
           <div className="shadow sm:rounded-md sm:overflow-hidden">
             <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
               <div className="grid grid-cols-6 gap-6">
-                <h2 className="col-span-6">{singleSkill.skillName}</h2>
-                <p className="col-span-3">{formatDate(singleSkill.skillDate)}</p>
-                <p className="col-span-3">{singleSkill.skillScore}</p>
-                <p className="col-span-6">{singleSkill.skillNotes}</p>
+                <div className="col-span-6">
+                  <h2 className="text-lg">{singleSkill.skillName}</h2>
+                  <p className="text-xs text-gray-500">{formatDate(singleSkill.skillDate)}</p>
+                </div>
+                {/* <p className="col-span-3">{formatDa>te(singleSkill.skillDate)}</p> */}
+                <p className="col-span-6">
+                  Score:
+                  {singleSkill.skillScore}
+                </p>
+                <div className="col-span-6">
+                  <label className=" text-base ">Notes</label>
+                  <p className="">{singleSkill.skillNotes}</p>
+                </div>
               </div>
             </div>
           </div>
