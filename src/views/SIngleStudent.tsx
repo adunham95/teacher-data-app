@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import GroupChip from '../components/GroupChip';
 import Modal from '../components/Modal';
 import PageHeader from '../components/PageHeader';
+import SkillForm from '../components/SkillForm';
 import { getSingleStudent } from '../functions/students';
 import { StudentInterface } from '../interface';
 
@@ -61,6 +62,7 @@ const SingleStudent = () => {
             Add Behavior
           </button>
         </div>
+        <SkillForm />
       </main>
       <Modal id="newSkill">
         <h1>New Skill</h1>

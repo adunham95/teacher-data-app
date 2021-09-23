@@ -16,4 +16,5 @@ export const GroupSchema = {
 export const dbNames = {
   meta: 'studentMeta',
   groupMeta: 'groupMeta',
+  skillsMeta: 'skillList',
 };
